@@ -30,4 +30,8 @@ export class UsersStoreFacade {
     this.store.dispatch(UsersActions.deleteUser({ id }));
   }
 
+  selectUser(id: number) {
+    this.store.dispatch(UsersActions.selectUser({ id }));
+  }
+
 }

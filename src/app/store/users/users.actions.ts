@@ -21,3 +21,8 @@ export const deleteUser = createAction(
   props<{id: number}>()
 );
 
+export const selectUser = createAction(
+  '[Users] Select User',
+  props<{id: number}>()
+);
+

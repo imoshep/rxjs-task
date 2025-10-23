@@ -4,11 +4,14 @@ import { User } from './users.models';
 import { UsersActions } from './index';
 
 export interface UsersState extends EntityState<User> {
+  selectedUserId: number | null;
 }
 
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
-export const initialState: UsersState = adapter.getInitialState();
+export const initialState: UsersState = adapter.getInitialState({
+  selectedUserId: null
+});
 
 export const usersReducer = createReducer(
   initialState,
@@ -24,6 +27,10 @@ export const usersReducer = createReducer(
   }),
   on(UsersActions.updateUser, (state, { update }) => adapter.updateOne(update, state)),
   on(UsersActions.deleteUser, (state, { id }) => adapter.removeOne(id, state)),
+  on(UsersActions.selectUser, (state, { id }) => ({
+    ...state,
+    selectedUserId: id
+  }))
 );
 
 export const { selectAll } = adapter.getSelectors();
