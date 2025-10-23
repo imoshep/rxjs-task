@@ -21,7 +21,3 @@ export const deleteUser = createAction(
   props<{id: number}>()
 );
 
-export const saveUser = createAction(
-  '[Users] Save User',
-  props<{user: User}>()
-);

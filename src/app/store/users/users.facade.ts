@@ -30,7 +30,4 @@ export class UsersStoreFacade {
     this.store.dispatch(UsersActions.deleteUser({ id }));
   }
 
-  saveUser(user: User) {
-    this.store.dispatch(UsersActions.saveUser({ user }));
-  }
 }
