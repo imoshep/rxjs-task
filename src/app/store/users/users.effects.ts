@@ -17,9 +17,9 @@ export class UsersEffects {
       return this.actions$.pipe(
         ofType(UsersActions.selectUser),
         withLatestFrom(this.store.select(UsersSelectors.selectSelectedUserId) as Observable<number | null>),
-        filter(([action, selectedUserId]: [any, number | null]) => selectedUserId !== null),
-        switchMap(([action, selectedUserId]: [any, number | null]) => {
-          const userId = selectedUserId!; // Safe to use ! here due to filter above
+        filter(([action, selectedUserId]) => selectedUserId !== null),
+        switchMap(([action, selectedUserId]) => {
+          const userId = selectedUserId!;
 
           this.store.dispatch(UsersActions.loadUserDetails({ userId }));
 
