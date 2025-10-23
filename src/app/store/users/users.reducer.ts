@@ -5,12 +5,16 @@ import { UsersActions } from './index';
 
 export interface UsersState extends EntityState<User> {
   selectedUserId: number | null;
+  userDetails: { [userId: number]: any };
+  loadingUserDetails: boolean;
 }
 
 export const adapter: EntityAdapter<User> = createEntityAdapter<User>();
 
 export const initialState: UsersState = adapter.getInitialState({
-  selectedUserId: null
+  selectedUserId: null,
+  userDetails: {},
+  loadingUserDetails: false
 });
 
 export const usersReducer = createReducer(
@@ -30,6 +34,22 @@ export const usersReducer = createReducer(
   on(UsersActions.selectUser, (state, { id }) => ({
     ...state,
     selectedUserId: id
+  })),
+  on(UsersActions.loadUserDetails, (state, { userId }) => ({
+    ...state,
+    loadingUserDetails: true
+  })),
+  on(UsersActions.loadUserDetailsSuccess, (state, { userId, details }) => ({
+    ...state,
+    loadingUserDetails: false,
+    userDetails: {
+      ...state.userDetails,
+      [userId]: details
+    }
+  })),
+  on(UsersActions.loadUserDetailsFailure, (state, { userId, error }) => ({
+    ...state,
+    loadingUserDetails: false
   }))
 );
 

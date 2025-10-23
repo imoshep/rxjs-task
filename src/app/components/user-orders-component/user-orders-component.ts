@@ -6,11 +6,12 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserNameComponent } from '../user-name-component/user-name-component';
 import { OrderTotalComponent } from '../order-total-component/order-total-component';
+import { UserDetailsComponent } from '../user-details-component/user-details-component';
 
 @Component({
   selector: 'app-user-orders-component',
   standalone: true,
-  imports: [CommonModule, UserNameComponent, OrderTotalComponent],
+  imports: [CommonModule, UserNameComponent, OrderTotalComponent, UserDetailsComponent],
   templateUrl: './user-orders-component.html',
   styleUrl: './user-orders-component.scss',
 })

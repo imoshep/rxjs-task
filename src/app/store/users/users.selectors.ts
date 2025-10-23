@@ -45,3 +45,22 @@ export const selectSelectedUserSummary = createSelector(
     };
   }
 );
+
+export const selectUserDetails = createSelector(
+  selectUsersState,
+  (state) => state.userDetails
+);
+
+export const selectSelectedUserDetails = createSelector(
+  selectSelectedUserId,
+  selectUserDetails,
+  (selectedUserId, userDetails) => {
+    if (selectedUserId === null) return null;
+    return userDetails[selectedUserId] || null;
+  }
+);
+
+export const selectLoadingUserDetails = createSelector(
+  selectUsersState,
+  (state) => state.loadingUserDetails
+);

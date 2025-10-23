@@ -1,0 +1,38 @@
+.user-details-container {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 1rem 0;
+  background-color: #fff5f5;
+}
+
+.details {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.detail-item {
+  padding: 0.5rem;
+  background-color: #fef2f2;
+  border-radius: 4px;
+  border-left: 3px solid #ef4444;
+}
+
+.loading {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+.no-details {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  font-style: italic;
+}
+
+h4 {
+  margin: 0 0 1rem 0;
+  color: #555;
+}

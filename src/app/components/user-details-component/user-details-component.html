@@ -1,0 +1,30 @@
+<div class="user-details-container">
+  <h4>User Details:</h4>
+
+  @if (loadingUserDetails$ | async) {
+    <div class="loading">
+      <p>Loading user details...</p>
+    </div>
+  } @else {
+    @if (selectedUserDetails$ | async; as details) {
+      <div class="details">
+        <div class="detail-item">
+          <strong>Email:</strong> {{ details.email }}
+        </div>
+        <div class="detail-item">
+          <strong>Phone:</strong> {{ details.phone }}
+        </div>
+        <div class="detail-item">
+          <strong>Address:</strong> {{ details.address }}
+        </div>
+        <div class="detail-item">
+          <strong>Last Login:</strong> {{ details.lastLogin | date:'medium' }}
+        </div>
+      </div>
+    } @else {
+      <div class="no-details">
+        <p>No user selected or details not available</p>
+      </div>
+    }
+  }
+</div>

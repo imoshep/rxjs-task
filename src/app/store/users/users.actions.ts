@@ -26,3 +26,18 @@ export const selectUser = createAction(
   props<{id: number}>()
 );
 
+export const loadUserDetails = createAction(
+  '[Users] Load User Details',
+  props<{userId: number}>()
+);
+
+export const loadUserDetailsSuccess = createAction(
+  '[Users] Load User Details Success',
+  props<{userId: number; details: any}>()
+);
+
+export const loadUserDetailsFailure = createAction(
+  '[Users] Load User Details Failure',
+  props<{userId: number; error: string}>()
+);
+
