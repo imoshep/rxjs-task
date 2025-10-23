@@ -7,9 +7,13 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class UsersStoreFacade {
   users$: Observable<User[]>;
+  selectedUserOrders$: Observable<any>;
+  selectedUserSummary$: Observable<any>;
 
   constructor(private store: Store, private usersService: UsersService) {
     this.users$ = this.store.select(UsersSelectors.selectAllUsers);
+    this.selectedUserOrders$ = this.store.select(UsersSelectors.selectSelectedUserOrders);
+    this.selectedUserSummary$ = this.store.select(UsersSelectors.selectSelectedUserSummary);
   }
 
   loadUsersFromService() {

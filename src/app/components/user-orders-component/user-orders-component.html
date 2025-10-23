@@ -1,1 +1,29 @@
-<p>user-orders-component works!</p>
+<div class="user-orders-container">
+  <h2>User Orders</h2>
+  
+  <div class="user-selection">
+    <h3>Select a User:</h3>
+    @if (users$ | async; as users) {
+      <div class="user-buttons">
+        @for (user of users; track user.id) {
+          <button 
+            (click)="selectUser(user.id)"
+            class="user-button">
+            {{ user.name }} (ID: {{ user.id }})
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="subcomponents-container">
+    <app-user-name-component></app-user-name-component>
+    <app-order-total-component></app-order-total-component>
+  </div>
+
+  @if (!(selectedUserSummary$ | async)) {
+    <div class="no-selection">
+      <p>Please select a user to view their order information.</p>
+    </div>
+  }
+</div>

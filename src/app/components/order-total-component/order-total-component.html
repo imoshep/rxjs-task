@@ -1,0 +1,23 @@
+<div class="order-total-container">
+  @if (selectedUserOrders$ | async; as orders) {
+    <div>
+      <h4>Order Total:</h4>
+      <div class="orders-list">
+        @for (order of orders; track order.id) {
+          <div class="order-item">
+            <span>Order #{{ order.id }}: ${{ order.total }}</span>
+          </div>
+        }
+      </div>
+      <div class="total-sum">
+        @if (selectedUserSummary$ | async; as summary) {
+          <strong>Total Sum: ${{ summary.totalSum }}</strong>
+        }
+      </div>
+    </div>
+  } @else {
+    <div class="no-orders">
+      <p>No orders found for selected user</p>
+    </div>
+  }
+</div>
